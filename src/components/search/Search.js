@@ -8,12 +8,43 @@ class Search extends Component{
         apiKey:'17241914-90da7b93c0ccceb734849dcd1',
         images:[]
     };
+
+    imagesArray = [];
+    componentDidMount() {
+        console.log("I am called")
+        this.callInitialImageAPI('Blossom').then( response => {
+            console.log("The response is: " + response)
+            this.setState({images: this.imagesArray}); 
+            console.log("the result is  :: ",this.state.images)     
+        });
+    }
+
+    callInitialImageAPI(imageSearchText) {
+        return new Promise((resolve, reject) => {
+            axios.get(
+                `${this.state.apiUrl}/?key=${this.state.apiKey}&q=${
+                    imageSearchText
+                }&image_type=photo&safesearch=true`
+            )
+            .then(res=>{
+                console.log(res.data.hits)
+                // this.imagesArray.concat(res.data.hits)
+                this.imagesArray = [...this.imagesArray, ...res.data.hits]
+                resolve(this.imagesArray)
+            })
+            .catch(err=>{
+                console.log(err);
+                reject(err);
+            });
+        });
+    }
+
     onTextChange=(e)=>{
         const val=e.target.value;
         this.setState({[e.target.name]:val},()=>{
             if(val==='')
             {
-                this.setState({images:[]});
+                this.setState({images:this.imagesArray});
             }
             else{
             axios

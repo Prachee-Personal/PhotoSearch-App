@@ -1,6 +1,8 @@
-import React,{Component} from 'react';
+import React,{Component,useState} from 'react';
 import axios from 'axios';
 import ImageResult from "./ImageResult/ImageResult";
+
+const [currentPage, setCurrentPage] = useState(0);
 class Search extends Component{
     state={
         searchText:'',
@@ -12,7 +14,7 @@ class Search extends Component{
     imagesArray = [];
     componentDidMount() {
         console.log("I am called")
-        this.callInitialImageAPI('Blossom').then( response => {
+        this.callInitialImageAPI('WildCat').then( response => {
             console.log("The response is: " + response)
             this.setState({images: this.imagesArray}); 
             console.log("the result is  :: ",this.state.images)     
@@ -61,7 +63,7 @@ class Search extends Component{
     render(){
         console.log(this.state.images);
         return(
-            <center>
+            <center className="searchBox">
             <input type="text" 
         placeholder="Search for images"
         name="searchText"

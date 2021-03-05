@@ -1,15 +1,15 @@
-import React, { Component, useState } from 'react';
+import React, { Component} from 'react';
 import axios from 'axios';
 import ImageResult from "./ImageResult/ImageResult";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css'
+import './style.css';
 
 class Search extends Component {
     state = {
         searchText: '',
         apiUrl: 'https://pixabay.com/api',
         apiKey: '17241914-90da7b93c0ccceb734849dcd1',
-        images: []
+        images: [],
     };
 
     imagesArray = [];

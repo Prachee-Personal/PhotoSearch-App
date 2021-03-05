@@ -27,15 +27,15 @@ class ImageResults extends Component{
                 <GridList cols={3}>
                 {  images.map(img=>(
                         <GridTile
-                        title={img.tags}
-                        key={img.id}
+                         title={img.tags}
+                         key={img.id}
                         actionIcon={
                             <IconButton onClick={()=>this.handleOpen(img.largeImageURL)}>
-                            <ZoomIn color="white" />
+                            <ZoomIn color="white"/>
                             </IconButton>
-                        }
+                        } 
                         >
-                        <img src={img.largeImageURL} alt="" />
+                        <img src={img.largeImageURL} alt=""/>
                         </GridTile>
                     ))
                 }
@@ -50,7 +50,8 @@ class ImageResults extends Component{
         ]
         return(
             
-            <div>   
+            <div className ='row'> 
+            <div className ='col-md-12'>
             {imageList}
             <Dialog
             actions={actions}
@@ -58,8 +59,9 @@ class ImageResults extends Component{
             open={this.state.open}
             onRequestClose={this.handleClose}
             >
-            <img src={this.state.currentImg} alt='iamge'/>
+            <img src={this.state.currentImg} alt='iamge' style={{maxWidth:"720px",maxHeight:"fitContent",}}/>  
             </Dialog>
+            </div>  
             </div>
         )
     }

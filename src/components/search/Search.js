@@ -120,15 +120,17 @@ class Search extends Component {
                     <div className="col md-12">
                         <h1 className="title">PhotoGallery</h1>
                         <center>
-                            <input className="searchbox" type="text"
+                            <input className="searchbox" 
+                            type="text"
                                 placeholder="Search For Images"
+                                autocomplete="off"
                                 name="searchText"
                                 value={this.state.searchText}
                                 onChange={this.onTextChange}
                             />
                             <br />
-                            <button id="PrevButton" onClick={this.handlePageChange}>Previous</button>
-                            <button id="NextButton" onClick={this.handlePageChange}>Next</button>
+                            <button style={{backgroundColor: 'purple', color: 'white',marginRight:'5px',marginBottom:'15px',padding:"8px"}} id="PrevButton" onClick={this.handlePageChange}>Previous</button>
+                            <button style={{backgroundColor: 'purple', color: 'white',marginLeft:'5px',marginBottom:'15px',padding:"8px"}} id="NextButton" onClick={this.handlePageChange}>Next</button>
                             {this.state.images.length > 0 ? (<ImageResult images={this.state.images} />) : null}
                         </center>
                     </div>

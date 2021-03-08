@@ -25,7 +25,7 @@ class ImageResults extends Component{
         {
             imageList=(
                 <GridList cols={3}>
-                {  images.map(img=>(
+                {images.map(img=>(
                         <GridTile
                          title={img.tags}
                          key={img.id}

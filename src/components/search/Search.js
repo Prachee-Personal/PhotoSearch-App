@@ -95,7 +95,6 @@ class Search extends Component {
         const val = e.target.value;
         this.setState({ [e.target.name]: val }, () => {
             if (val === '') {
-                console.log("Here")
                 this.componentDidMount();
             }
             else {
